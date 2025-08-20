@@ -11,6 +11,17 @@ def _(mo):
 
 
 @app.cell
+def _():
+    import os
+    import sqlalchemy
+
+    _password = os.environ.get("POSTGRES_PASSWORD", "YMEtKv")
+    DATABASE_URL = f"postgresql://ben:{_password}@localhost:5432/trader"
+    engine = sqlalchemy.create_engine(DATABASE_URL)
+    return
+
+
+@app.cell
 def cell1():
     x = 42
     return (x,)
